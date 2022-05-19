@@ -2,9 +2,10 @@
 
 using namespace genv;
 
-bool in_radius(int x, int y, int r)
+bool in_radius(int x, int y, int u, int v)
 {
-    return (sqrt((pow(x,2)+pow(y,2))) <= r);
+    float c = sqrt((pow(x+y,2)-pow(u+v,2)));
+    return c >= 9  && c <= 11;
 }
 
 Tile::Tile(Application* parent, int x, int y, int sx, int sy, Phase p):
@@ -57,7 +58,7 @@ void Tile::draw()
             {
                 for (int j=_y;j<_size_y;j++)
                 {
-                    if (in_radius(i,j,_size_x/2))
+                    if (in_radius(i,j,_x+_size_x/2, _y+_size_y/2))
                     {
                             gout << color(255,255,255) << move_to(i,j) << dot;
                     }

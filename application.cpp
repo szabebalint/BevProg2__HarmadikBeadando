@@ -6,12 +6,13 @@ using namespace genv;
 Application::Application(int width, int height)
 {
     gout.open(width, height);
+    gout.load_font("LiberationSans-Regular.ttf", 50);
     //gout.load_font("LiberationSans-Regular.ttf", 15);
 }
 
 void screen_clear()
 {
-    gout << move_to(0,0) << color(0,0,0) << box(800, 600);
+    gout << move_to(0,0) << color(0,0,0) << box(800,600);
 }
 
 Turn Application::turn()
@@ -39,10 +40,13 @@ void Application::add_widget(Widget* w)
     {
     case MAIN_MENU:
         main_menu.push_back(w);
+        break;
     case GAME:
         game.push_back(w);
+        break;
     case GAME_OVER:
         gameover_screen.push_back(w);
+        break;
     }
 }
 
@@ -53,6 +57,7 @@ void Application::event_loop()
 
     while (gin >> ev && ev.keycode != key_escape)
     {
+        screen_clear();
         if (_phase == MAIN_MENU) // MAIN MENU PHASE
         {
             if (ev.type == ev_mouse && ev.button == btn_left) {
@@ -75,7 +80,7 @@ void Application::event_loop()
             {
                 w->draw();
             }
-            gout << refresh;
+//            std::cout << rand() << std::endl;
         }
 
         else if (_phase == GAME) // GAME PHASE
@@ -96,14 +101,16 @@ void Application::event_loop()
 
             screen_clear();
 
+            std::cout << game.size() << std::endl;
+
             for (Widget* w: game)
             {
                 w->draw();
             }
-            gout << refresh;
+
         }
 
-        else if (_phase == GAME_OVER)
+        else if (_phase == GAME_OVER) // GAME OVER SCREEN
         {
             if (ev.type == ev_mouse && ev.button == btn_left) {
                 for (size_t i=0; i<gameover_screen.size(); i++) {
@@ -125,8 +132,8 @@ void Application::event_loop()
             {
                 w->draw();
             }
-            gout << refresh;
         }
+        gout << refresh;
     }
 }
 

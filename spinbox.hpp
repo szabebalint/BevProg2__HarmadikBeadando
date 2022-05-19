@@ -16,6 +16,7 @@ public:
     virtual void draw() override;
     virtual void handle(genv::event) override;
     Phase phase() override;
+    int get_number();
 };
 
 #endif // SPINBOX_HPP

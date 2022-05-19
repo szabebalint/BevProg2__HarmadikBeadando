@@ -6,7 +6,9 @@ using namespace genv;
 
 Spinbox::Spinbox(Application* parent, int x, int y, int sx, int sy, Phase p, int min, int max):
     Widget(parent, x, y, sx, sy, p), _min(min), _max(max)
-{}
+{
+    _number = min;
+}
 
 void Spinbox::draw()
 {
@@ -23,9 +25,9 @@ void Spinbox::draw()
     gout << move_to(_x+10, _y+_size_y*0.67) << color(0,0,0)
          << text(ss.str());
 
-    gout << color(255,255,255) << move_to(_x+_size_x*0.85, _y+_size_y/2-gout.cdescent())
+    gout << color(255,255,255) << move_to(_x+_size_x*0.85, _y+_size_y/2-gout.cascent()-gout.cdescent())
          << text('+')
-         << color(255,255,255) << move_to(_x+_size_x*0.85, _y+_size_y-gout.cdescent())
+         << color(255,255,255) << move_to(_x+_size_x*0.85, _y+_size_y-gout.cascent()-gout.cdescent())
          << text('-');
 }
 
@@ -84,3 +86,7 @@ Phase Spinbox::phase()
     return _phase;
 }
 
+int Spinbox::get_number()
+{
+    return _number;
+}
