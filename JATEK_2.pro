@@ -10,7 +10,6 @@ SOURCES += \
         main.cpp \
         spinbox.cpp \
         statictext.cpp \
-        tabla.cpp \
         tile.cpp \
         widgets.cpp
 
@@ -39,7 +38,6 @@ HEADERS += \
     examplecheckbox.hpp \
     spinbox.hpp \
     statictext.hpp \
-    tabla.hpp \
     tile.hpp \
     widgets.hpp
 

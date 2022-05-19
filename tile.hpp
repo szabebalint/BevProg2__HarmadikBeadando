@@ -12,6 +12,7 @@ public:
     void draw() override;
     void handle(genv::event) override;
     Phase phase() override;
+    void reset();
 //    Turn type();
 };
 

@@ -50,6 +50,11 @@ void Application::add_widget(Widget* w)
     }
 }
 
+void Application::game_process(event ev)
+{
+
+}
+
 void Application::event_loop()
 {
     event ev;
@@ -101,7 +106,7 @@ void Application::event_loop()
 
             screen_clear();
 
-            std::cout << game.size() << std::endl;
+//            std::cout << game.size() << std::endl;
 
             for (Widget* w: game)
             {

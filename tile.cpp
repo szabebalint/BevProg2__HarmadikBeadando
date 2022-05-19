@@ -4,8 +4,8 @@ using namespace genv;
 
 bool in_radius(int x, int y, int u, int v)
 {
-    float c = sqrt((pow(x+y,2)-pow(u+v,2)));
-    return c >= 9  && c <= 11;
+    int c = sqrt((pow(x-u,2)+pow(y-v,2)));
+    return c >=6 && c <= 8;
 }
 
 Tile::Tile(Application* parent, int x, int y, int sx, int sy, Phase p):
@@ -20,11 +20,10 @@ Phase Tile::phase()
     return _phase;
 }
 
-
-//Turn Tile::type()
-//{
-//    return _type;
-//}
+void Tile::reset()
+{
+    _checked = false;
+}
 
 void Tile::handle(event ev)
 {
@@ -54,17 +53,16 @@ void Tile::draw()
         }
         else if (_type == CIRCLE)
         {
-            for (int i=_x;i<_size_x;i++)
+            for (int i=_x;i<_x+_size_x;i++)
             {
-                for (int j=_y;j<_size_y;j++)
+                for (int j=_y;j<_y+_size_y;j++)
                 {
                     if (in_radius(i,j,_x+_size_x/2, _y+_size_y/2))
                     {
-                            gout << color(255,255,255) << move_to(i,j) << dot;
+                        gout << color(255,255,255) << move_to(i,j) << dot;
                     }
                 }
             }
         }
     }
 }
-
