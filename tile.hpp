@@ -7,12 +7,12 @@
 class Tile: public ExampleCheckBox
 {
     Turn _type;
-    Phase _belongs_to;
 public:
-    Tile(Application*, int, int, int, int);
+    Tile(Application*, int, int, int, int, Phase);
     void draw() override;
     void handle(genv::event) override;
-    Turn type();
+    Phase phase() override;
+//    Turn type();
 };
 
 #endif // TILE_H

@@ -3,8 +3,8 @@
 using namespace std;
 using namespace genv;
 
-StaticText::StaticText(Application* parent, int x, int y, int sx, int sy, string s)
-    :Widget(parent,x,y,sx,sy), _s(s)
+StaticText::StaticText(Application* parent, int x, int y, int sx, int sy, string s, Phase p)
+    :Widget(parent,x,y,sx,sy,p), _s(s)
 {
 }
 
@@ -19,3 +19,8 @@ void StaticText::draw()
 
 void StaticText::handle(event ev)
 {}
+
+Phase StaticText::phase()
+{
+    return _phase;
+}

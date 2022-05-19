@@ -2,8 +2,8 @@
 #include "graphics.hpp"
 using namespace genv;
 
-ExampleCheckBox::ExampleCheckBox(Application* parent, int x, int y, int sx, int sy)
-    : Widget(parent,x,y,sx,sy)
+ExampleCheckBox::ExampleCheckBox(Application* parent, int x, int y, int sx, int sy, Phase p)
+    : Widget(parent,x,y,sx,sy,p)
 {
     _checked=false;
 }
@@ -34,3 +34,9 @@ bool ExampleCheckBox::is_checked()
 {
     return _checked;
 }
+
+Phase ExampleCheckBox::phase()
+{
+    return _phase;
+}
+

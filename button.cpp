@@ -2,12 +2,11 @@
 
 using namespace genv;
 
-Button::Button(Application* parent, int x, int y, int sx, int sy, std::string title, Phase bt, std::function<void()> f) :
-    Widget(parent,x,y,sx,sy)
+Button::Button(Application* parent, int x, int y, int sx, int sy, std::string title, Phase p, std::function<void()> f) :
+    Widget(parent,x,y,sx,sy,p)
 {
     _title = title;
     _f = f;
-    _belongs_to = bt;
 }
 
 void Button::draw()
@@ -38,4 +37,9 @@ void Button::handle(event ev)
             action();
         }
     }
+}
+
+Phase Button::phase()
+{
+    return _phase;
 }

@@ -39,6 +39,8 @@ public:
     void add_widget(Widget*);
     Phase phase();
     Turn turn();
+    void set_phase(Phase);
+    void set_turn(Turn);
 };
 
 #endif // APPLICATION_HPP

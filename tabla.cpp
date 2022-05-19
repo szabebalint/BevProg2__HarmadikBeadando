@@ -1,6 +1,6 @@
-#include "tabla.hpp"
+//#include "tabla.hpp"
 
-Tabla::Tabla()
-{
+//Tabla::Tabla()
+//{
 
-}
+//}

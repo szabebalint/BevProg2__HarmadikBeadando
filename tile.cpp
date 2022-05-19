@@ -7,15 +7,23 @@ bool in_radius(int x, int y, int r)
     return (sqrt((pow(x,2)+pow(y,2))) <= r);
 }
 
-Tile::Tile(Application* parent, int x, int y, int sx, int sy):
-    ExampleCheckBox(parent,x,y,sx,sy)
+Tile::Tile(Application* parent, int x, int y, int sx, int sy, Phase p):
+    ExampleCheckBox(parent,x,y,sx,sy,p)
 {
+    _checked = false;
+    _phase = GAME;
 }
 
-Turn Tile::type()
+Phase Tile::phase()
 {
-    return _type;
+    return _phase;
 }
+
+
+//Turn Tile::type()
+//{
+//    return _type;
+//}
 
 void Tile::handle(event ev)
 {
@@ -23,8 +31,8 @@ void Tile::handle(event ev)
     {
         if (ev.button == btn_left && !_checked && is_selected(ev.pos_x,ev.pos_y))
         {
-            _checked = true;
             _type = _parent->turn();
+            _checked = true;
         }
     }
 }

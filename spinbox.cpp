@@ -4,8 +4,8 @@
 //#include <iostream>
 using namespace genv;
 
-Spinbox::Spinbox(Application* parent, int x, int y, int sx, int sy, int min, int max):
-    Widget(parent, x, y, sx, sy), _min(min), _max(max)
+Spinbox::Spinbox(Application* parent, int x, int y, int sx, int sy, Phase p, int min, int max):
+    Widget(parent, x, y, sx, sy, p), _min(min), _max(max)
 {}
 
 void Spinbox::draw()
@@ -78,3 +78,9 @@ void Spinbox::handle(event ev)
         }
     }
 }
+
+Phase Spinbox::phase()
+{
+    return _phase;
+}
+
