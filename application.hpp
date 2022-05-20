@@ -35,7 +35,7 @@ protected:
 public:
     Application(int, int);
     void event_loop();
-    void screen_clear();
+    virtual void screen_clear();
 //    void game_process(genv::event);
     void add_widget(Widget*);
     Phase phase();

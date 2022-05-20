@@ -49,10 +49,3 @@ void Application::add_widget(Widget* w)
         break;
     }
 }
-
-
-//void Application::event_loop()
-
-
-
-
