@@ -14,10 +14,30 @@ Tile::Tile(Application* parent, int x, int y, int sx, int sy, Phase p):
     _checked = false;
     _phase = GAME;
 }
-
+void Tile::set_pos_x(int i)
+{
+    pos_y = i%15;
+}
+void Tile::set_pos_y(int i)
+{
+    pos_y = i-1/15;
+}
+int Tile::get_pos_x()
+{
+    return pos_x;
+}
+int Tile::get_pos_y()
+{
+    return pos_y;
+}
 Phase Tile::phase()
 {
     return _phase;
+}
+
+Turn Tile::type()
+{
+    return _type;
 }
 
 void Tile::reset()

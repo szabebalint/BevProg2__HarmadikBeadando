@@ -10,7 +10,7 @@ Application::Application(int width, int height)
     //gout.load_font("LiberationSans-Regular.ttf", 15);
 }
 
-void screen_clear()
+void Application::screen_clear()
 {
     gout << move_to(0,0) << color(0,0,0) << box(800,600);
 }
@@ -50,97 +50,9 @@ void Application::add_widget(Widget* w)
     }
 }
 
-void Application::game_process(event ev)
-{
 
-}
+//void Application::event_loop()
 
-void Application::event_loop()
-{
-    event ev;
-    int focus = -1;
-
-    while (gin >> ev && ev.keycode != key_escape)
-    {
-        screen_clear();
-        if (_phase == MAIN_MENU) // MAIN MENU PHASE
-        {
-            if (ev.type == ev_mouse && ev.button == btn_left) {
-                for (size_t i=0; i<main_menu.size(); i++) {
-                    if (main_menu[i]->is_selected(ev.pos_x, ev.pos_y))
-                    {
-                        focus = i;
-                    }
-                }
-            }
-
-            if (focus != -1)
-            {
-                main_menu[focus]->handle(ev);
-            }
-
-            screen_clear();
-
-            for (Widget* w: main_menu)
-            {
-                w->draw();
-            }
-//            std::cout << rand() << std::endl;
-        }
-
-        else if (_phase == GAME) // GAME PHASE
-        {
-            if (ev.type == ev_mouse && ev.button == btn_left) {
-                for (size_t i=0; i<game.size(); i++) {
-                    if (game[i]->is_selected(ev.pos_x, ev.pos_y))
-                    {
-                        focus = i;
-                    }
-                }
-            }
-
-            if (focus != -1)
-            {
-                game[focus]->handle(ev);
-            }
-
-            screen_clear();
-
-//            std::cout << game.size() << std::endl;
-
-            for (Widget* w: game)
-            {
-                w->draw();
-            }
-
-        }
-
-        else if (_phase == GAME_OVER) // GAME OVER SCREEN
-        {
-            if (ev.type == ev_mouse && ev.button == btn_left) {
-                for (size_t i=0; i<gameover_screen.size(); i++) {
-                    if (gameover_screen[i]->is_selected(ev.pos_x, ev.pos_y))
-                    {
-                        focus = i;
-                    }
-                }
-            }
-
-            if (focus != -1)
-            {
-                gameover_screen[focus]->handle(ev);
-            }
-
-            screen_clear();
-
-            for (Widget* w: gameover_screen)
-            {
-                w->draw();
-            }
-        }
-        gout << refresh;
-    }
-}
 
 
 
