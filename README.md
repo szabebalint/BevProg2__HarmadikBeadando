@@ -13,7 +13,7 @@ EDIT: Egyelőre nem teljes, maga a játék része sajnos nem lett kész időre. 
 
 
 
-* Illetve inkább "látná el".
+*Illetve inkább "látná el".
 
 
 // Bár elkezdtem volna előbb... (Kelt: 2022.05.20. 02:12)
